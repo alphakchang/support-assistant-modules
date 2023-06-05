@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 import pandas as pd
 import openai
 
-openai.api_key = "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"
+openai.api_key = ""
 
 app = Flask(__name__)
 
