@@ -19,8 +19,7 @@ document.getElementById('sendButton').addEventListener('click', function() {
 });
 
 function generateAnswer(message) {
-    // here is where I can see how to use the message
-    if (message === "hello" || message === "hi") {
+    if (isGreeting(message) && lessThanFiveWords(message)) {
         randomGreeting();
     } else {
         fetch('/find_matches', {
@@ -144,6 +143,31 @@ function randomNoMatchReply() {
     sendAnswer(reply);
 }
 
+function isGreeting(inputString) {
+    const wordList = ["hi", "hello", "greeting", "greetings", "howdy", "up"];
+    let found = false;
+    for (let word of wordList) {
+        if (inputString.includes(word)) {
+            found = true;
+            break;
+        }
+    }
+    if (found) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function lessThanFiveWords(inputString) {
+    const words = inputString.split(' ');
+
+    if (words.length <= 5) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 // Function to send GET request to the endpoint
 function test() {

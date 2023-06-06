@@ -43,8 +43,9 @@ def find_matches():
 
     prompt_1 = "I have a list of tags, each tag wrapped with square brackets: "
     prompt_2 = "Now read the following message then return the most relevant tags in their original forms, do not generate any new tags: "
+    prompt_2_5 = "mmq means MemoQ, ppt means powerpoint. "
     prompt_3 = "If there are no relevant tags, type 'NO MATCH'"
-    final_message =  prompt_1 + concatenated_tags + prompt_2 + userMessage + prompt_3
+    final_message =  prompt_1 + concatenated_tags + prompt_2 + userMessage + prompt_2_5 + prompt_3
 
     completion = openai.ChatCompletion.create(
         model='gpt-3.5-turbo',
@@ -55,7 +56,9 @@ def find_matches():
         temperature=0
     )
     matched = completion.choices[0].message.content
+    # print("---Start of matched tags---") #debug
     # print(matched) #debug
+    # print("---End of matched tags---") #debug
     if matched == "NO MATCH":
         reply = matched
     else:
