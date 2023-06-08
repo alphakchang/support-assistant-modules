@@ -144,7 +144,7 @@ function randomNoMatchReply() {
 }
 
 function isGreeting(inputString) {
-    const wordList = ["hi", "hello", "greeting", "greetings", "howdy", "up"];
+    const wordList = ["hi", "hello", "greeting", "greetings", "howdy", "up", "good"];
     let found = false;
     for (let word of wordList) {
         if (inputString.includes(word)) {
