@@ -14,18 +14,6 @@ if __name__ == "__main__":
 def index():
     return render_template("index.html")
 
-@app.route('/gpt', methods=['POST'])
-def gpt():
-    completion = openai.ChatCompletion.create(
-        model='gpt-3.5-turbo',
-        messages=[{
-            'role': 'user',
-            'content': request.json['message']
-        }]
-    )
-    reply = completion.choices[0].message.content
-    # return 1/0 #debug
-    return {'reply': reply}
 
 @app.route('/find_matches', methods=['POST'])
 def find_matches():
@@ -46,20 +34,11 @@ def find_matches():
     prompt_2 = "Now read the following message then return the most relevant tags in their original forms, do not generate any new tags: "
     prompt_2_5 = "mmq means MemoQ, ppt means powerpoint. "
     prompt_3 = "If there are no relevant tags, type 'NO MATCH'"
-    final_message =  prompt_1 + concatenated_tags + prompt_2 + userMessage + prompt_2_5 + prompt_3
+    final_prompt =  prompt_1 + concatenated_tags + prompt_2 + userMessage + prompt_2_5 + prompt_3
 
-    completion = openai.ChatCompletion.create(
-        model='gpt-3.5-turbo',
-        messages=[{
-            'role': 'user',
-            'content': final_message
-        }],
-        temperature=0
-    )
-    matched = completion.choices[0].message.content
-    # print("---Start of matched tags---") #debug
-    # print(matched) #debug
-    # print("---End of matched tags---") #debug
+    matched = gpt(final_prompt)
+    # print(f"Matched tags = {matched}") #debug
+
     if matched == "NO MATCH":
         reply = matched
     else:
@@ -72,6 +51,18 @@ def find_matches():
     # print(reply) #debug
     return {'reply': reply}
 
+def gpt(prompt):
+    completion = openai.ChatCompletion.create(
+        model='gpt-3.5-turbo',
+        messages=[{
+            'role': 'user',
+            'content': prompt
+        }],
+        temperature=0
+    )
+    reply = completion.choices[0].message.content
+    # return 1/0 #debug
+    return reply
 
 def create_trimmed_list(matched):
     matched_trim = matched.replace('"', '')

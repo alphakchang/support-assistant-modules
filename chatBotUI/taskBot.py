@@ -1,5 +1,5 @@
 from selenium import webdriver
-from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 def get_ticket_types():
     options = Options()
-    options.add_argument("-headless")
+    # options.add_argument("-headless")
     driver = webdriver.Chrome(options=options)
     driver.get("https://support.alphacrc.com:9676/portal/page/116-hr")
 
