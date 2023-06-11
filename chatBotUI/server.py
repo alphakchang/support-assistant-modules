@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import pandas as pd
 import openai
+import taskBot as tb
 
 openai.api_key = ""
 
@@ -98,6 +99,7 @@ def find_indices_of_trimmed_list(concatenated_tags, range_string_dict, trimmed_l
 
 @app.route('/test')
 def test():
+    tb.define_list()
     test = "hello"
     return {'reply': test}
 

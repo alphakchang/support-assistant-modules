@@ -98,6 +98,14 @@ button:active {
     transform: scale(0.95);
 }
 
+button.choiceButton {
+    margin: 2px;
+}
+
+/* .choiceDiv {
+    align-self: center;
+} */
+
 p {
     display: inline-block;
     margin-bottom: -15px;

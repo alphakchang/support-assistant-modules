@@ -1,3 +1,4 @@
+// The 'Send' button function which reads 
 document.getElementById('sendButton').addEventListener('click', function() {
     let messageBox = document.getElementById('messageBox');
     let chatlogs = document.getElementById('chatlogs');
@@ -21,6 +22,7 @@ document.getElementById('sendButton').addEventListener('click', function() {
 function generateAnswer(message) {
     if (isGreeting(message) && lessThanFiveWords(message)) {
         randomGreeting();
+        loading_off();
     } else {
         fetch('/find_matches', {
             method: 'POST',
@@ -41,6 +43,8 @@ function generateAnswer(message) {
             // console.log(reply); //debug
             // Check if reply is "NO MATCH"
             if (reply === "NO MATCH" || Object.keys(reply).length === 0) {
+                // var list = ["test1", "test2", "test3", "test4"];
+                // sendChoiceList(list);
                 randomNoMatchReply();
                 loading_off();
             }
@@ -58,6 +62,7 @@ function generateAnswer(message) {
                     sendLink(linkElement);
                 }
             }
+            loading_off();
         })
         .then(() => {
             closeOverloadAlert();
@@ -72,13 +77,49 @@ function sendAnswer(reply) {
     chatlogs.appendChild(replyMessage);
     chatlogs.appendChild(document.createElement('br'));
     chatlogs.scrollTop = chatlogs.scrollHeight;
-    loading_off();
 }
 
 function sendLink(linkElement) {
     chatlogs.appendChild(linkElement);
     chatlogs.appendChild(document.createElement('br'));
     chatlogs.scrollTop = chatlogs.scrollHeight;
+}
+
+function sendChoiceList(choiceList) {
+    choiceList.reverse();
+    var allChoices = document.createElement('div');
+    allChoices.classList.add('choiceDiv');
+    for (let choice of choiceList) {
+        var choiceButton = document.createElement('button');
+        choiceButton.classList.add('choiceButton');
+        choiceButton.innerText = choice;
+        allChoices.appendChild(choiceButton);
+    }
+    chatlogs.appendChild(allChoices);
+    chatlogs.scrollTop = chatlogs.scrollHeight;
+    identifyInitialChoice();
+}
+
+// Find all buttons with class - choiceButton, and identify which one the user clicks on
+function identifyInitialChoice() {
+    var buttons = document.getElementsByClassName('choiceButton');
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener('click', function(event) {
+                var theChoice = this.innerText;
+                if (theChoice === "HR") {
+                    sendAnswer("Please use the following link to log a ticket:");
+                    chatlogs.appendChild(document.createElement('br'));
+                    let linkElement = document.createElement('a');
+                    linkElement.innerText = "Human Resource Ticket Creation";
+                    linkElement.href = "https://support.alphacrc.com:9676/portal/page/116-hr";
+                    linkElement.target = "_blank";
+                    sendLink(linkElement);
+                } else {
+                    randomGreeting();
+                    document.getElementById('messageBox').focus();
+                }
+            });
+        }
 }
 
 document.getElementById('messageBox').addEventListener('keydown', function(event) {
@@ -93,8 +134,10 @@ document.getElementById('messageBox').addEventListener('keydown', function(event
 
 window.onload = function() {
     setTimeout(function() {
-        var welcomeMessage = 'Welcome to Alpha Support, how may I help you today?';
+        var welcomeMessage = 'Welcome to Alpha Support. Please select from the following options:';
         sendAnswer(welcomeMessage);
+        var options = ["HR", "memoQ Troubleshoot"];
+        sendChoiceList(options);
     }, 1100);
     document.getElementById('messageBox').focus();
 };
@@ -144,7 +187,8 @@ function randomNoMatchReply() {
 }
 
 function isGreeting(inputString) {
-    const wordList = ["hi", "hello", "greeting", "greetings", "howdy", "up", "good"];
+    const wordList = ["hi", "hello", "greeting", "greetings", "howdy", "aloha", "konnichiwa",
+                        "buenos dias", "guten tag", "salaam", "namaste", "hey"];
     let found = false;
     for (let word of wordList) {
         if (inputString.includes(word)) {
@@ -162,7 +206,7 @@ function isGreeting(inputString) {
 function lessThanFiveWords(inputString) {
     const words = inputString.split(' ');
 
-    if (words.length <= 5) {
+    if (words.length < 5) {
         return true;
     } else {
         return false;
