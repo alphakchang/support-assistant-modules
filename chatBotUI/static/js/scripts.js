@@ -1,4 +1,5 @@
 var hrTicketFlow = false;
+var leaver = false;
 var waitingForUser = true;
 var userMessage = '';
 
@@ -14,7 +15,7 @@ window.onload = function() {
         if (initChoice === options.reverse()[0]) {
             displayUserMessage(initChoice)
             hrTicketFlow = true;
-            createHRTicket();
+            createHRTicketList();
             // sendReply("Please use the following link to log a ticket:");
             // chatlogs.appendChild(document.createElement('br'));
             // let linkElement = document.createElement('a');
@@ -104,12 +105,12 @@ function generateAnswer(message) {
 }
 
 // Interact with user to create a list for ticket raising
-async function createHRTicket() {
+async function createHRTicketList() {
     var finalList = [];
     console.log("hrTicketFlow running");
 
     // 1. Get the alpha username
-    sendReply("No problem! I will help you to raise a ticket.")
+    sendReply("No problem! I will help you to raise a ticket")
     setTimeout(function() {
         sendReply("Please enter your alpha username")
     }, 250);
@@ -117,7 +118,7 @@ async function createHRTicket() {
     var nextStep = await waitingOver();
     if (nextStep) {
         console.log("username entered: " + userMessage);
-        var alpha_username = userMessage;
+        let alpha_username = userMessage;
         finalList.push(alpha_username);
         console.log(finalList);
     }
@@ -127,13 +128,17 @@ async function createHRTicket() {
     // console.log(hrTicketList);
     sendReply("Please choose the ticket type");
     sendChoiceList(hrTicketList, "ticketTypeButton");
-    var typeChoice = await getUserChoice("ticketTypeButton");
-    // console.log(typeChoice);
-    displayUserMessage(typeChoice);
+    var userChoice = await getUserChoice("ticketTypeButton");
+    var typeChoice = userChoice.toLowerCase(); // To be used later
+    if (typeChoice === "leaver") {
+        leaver = true;
+    }
+    // console.log(userChoice);
+    displayUserMessage(userChoice);
     // Now find the index in the type list
     hrTicketList.reverse();
     hrTicketList.unshift("");
-    var typeIndex = hrTicketList.findIndex(item => item === typeChoice);
+    var typeIndex = hrTicketList.findIndex(item => item === userChoice);
     // console.log(hrTicketList);
     // console.log(typeIndex);
     finalList.push(typeIndex);
@@ -143,26 +148,169 @@ async function createHRTicket() {
     sendReply("Please enter the full name of the " + typeChoice);
     document.getElementById('messageBox').focus();
     waitingForUser = true;
-    var nextStep = await waitingOver();
+    nextStep = await waitingOver();
     if (nextStep) {
         console.log("Full name entered: " + userMessage);
-        var fullname = userMessage;
+        var wordcount = countWords(userMessage);
+        while (wordcount < 2) {
+            sendReply("Seems like only part of the name was entered, please enter both the firstname and lastname");
+            document.getElementById('messageBox').focus();
+            waitingForUser = true;
+            nextStep = await waitingOver();
+            if (nextStep) {
+                wordcount = countWords(userMessage);
+            }
+        }
+        console.log("Full name entered: " + userMessage);
+        let fullname = userMessage;
         finalList.push(fullname);
         console.log(finalList);
     }
 
-    // 4. Get the stratetic group
-    var hrStrategicList = await grabList("strategicGroups");
-    console.log(hrStrategicList);
-    sendReply("Please choose the Strategic Group");
-    sendChoiceList(hrStrategicList, "strategicGroupButton");
-    typeChoice = await getUserChoice("strategicGroupButton");
-    console.log(typeChoice);
-    displayUserMessage(typeChoice);
-    //to continue
-    
+    // 4. Get the office
+    sendReply("Please enter the office location for the " + typeChoice);
+    document.getElementById('messageBox').focus();
+    waitingForUser = true;
+    nextStep = await waitingOver();
+    if (nextStep) {
+        console.log("Office: " + userMessage);
+        let office = userMessage;
+        finalList.push(office);
+        console.log(finalList);
+    }
 
+    // 5. Get the stratetic group
+    var hrStrategicList = await grabList("strategicGroups");
+    // console.log(hrStrategicList);
+    sendReply("Please choose the strategic group");
+    sendChoiceList(hrStrategicList, "strategicGroupButton");
+    userChoice = await getUserChoice("strategicGroupButton");
+    console.log(userChoice);
+    displayUserMessage(userChoice);
+    // Now find the index in the strategic group list
+    hrStrategicList.reverse();
+    var strategicIndex = hrStrategicList.findIndex(item => item === userChoice);
+    // console.log(hrStrategicList);
+    // console.log(strategicIndex);
+    finalList.push(strategicIndex);
+    console.log(finalList);
+    
+    // 6. Get the relevant mail aliases
+    sendReply("Which mail alias(es) is this " + typeChoice + " associated with? (if none can enter n/a)");
+    document.getElementById('messageBox').focus();
+    waitingForUser = true;
+    nextStep = await waitingOver();
+    if (nextStep) {
+        console.log("Mail aliases: " + userMessage);
+        let aliases = userMessage;
+        finalList.push(aliases);
+        console.log(finalList);
+    }
+
+    // 7. Get the Cost centre
+    sendReply("What is the cost centre for the " + typeChoice + "?");
+    document.getElementById('messageBox').focus();
+    waitingForUser = true;
+    nextStep = await waitingOver();
+    if (nextStep) {
+        console.log("Cost centre: " + userMessage);
+        let costCentre = userMessage;
+        finalList.push(costCentre);
+        console.log(finalList);
+    }
+
+    // 8. Get the language department code
+    sendReply("What is the language department code for the " + typeChoice + "?");
+    document.getElementById('messageBox').focus();
+    waitingForUser = true;
+    nextStep = await waitingOver();
+    if (nextStep) {
+        console.log("Department: " + userMessage);
+        let department = userMessage;
+        finalList.push(department);
+        console.log(finalList);
+    }
+
+    // 9. Get the date that the change will take effect
+    var date = "";
+    sendReply("What date is this change effective from? (Please use this date format dd-mm-yyyy)");
+    document.getElementById('messageBox').focus();
+    waitingForUser = true;
+    nextStep = await waitingOver();
+    if (nextStep) {
+        console.log("Date: " + userMessage);
+        date = userMessage;
+        while (isValidDateFormat(date) === false) {
+            sendReply("The date format entered was invalid, please use the date format dd-mm-yyyy, with dashes between the numbers");
+            document.getElementById('messageBox').focus();
+            waitingForUser = true;
+            nextStep = await waitingOver();
+            if (nextStep) {
+                date = userMessage;
+            }
+        }
+        console.log("Date: " + userMessage);
+        finalList.push(date);
+        console.log(finalList);
+    }
+
+    // 10. Check if this is a leaver, if yes, ask about holiday arrangement
+    if (leaver) {
+        sendReply("What is the remaining holiday arrangement?");
+        document.getElementById('messageBox').focus();
+        waitingForUser = true;
+        nextStep = await waitingOver();
+        if (nextStep) {
+            console.log("Remaining holiday arrangement: " + userMessage);
+            let holidayArrangement = userMessage;
+            finalList.push(holidayArrangement);
+            console.log(finalList);
+        }
+    }
+
+    // 11. Any other notes
+    sendReply("Please enter any additional info");
+    document.getElementById('messageBox').focus();
+    waitingForUser = true;
+    nextStep = await waitingOver();
+    if (nextStep) {
+        console.log("Additional info: " + userMessage);
+        let additional = userMessage;
+        finalList.push(additional);
+        console.log(finalList);
+    }
+
+    sendReply("I will now raise your ticket");
+    loading_on();
+    var ticketLink = await raiseHRTicket(finalList);
+    console.log("Ticket Link: " + ticketLink);
+    // now pass the list to another function to raise the ticket and get the link of the ticket
 }
+
+function raiseHRTicket(listData) {
+    return fetch('/raiseHRTicket', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({list: listData}),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        let receivedLink = data.link; 
+        console.log(receivedLink);
+        return receivedLink;
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
+
 
 /* functions to work with async functions to wait for user input */
 
@@ -343,6 +491,25 @@ function randomGreeting() {
 }
 
 /* End of Greeting identification and reply section */
+
+function countWords(str) {
+    // Split the string into an array of words
+    var wordsArray = str.trim().split(/\s+/);
+  
+    // Return the number of words
+    return wordsArray.length;
+}
+
+function isValidDateFormat(date) {
+    // Regular expression to match date in "dd-mm-yyyy" format
+    const regex = /^(0[1-9]|[12][0-9]|3[01])[-](0[1-9]|1[012])[-]\d{4}$/;
+  
+    if (regex.test(date)) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 // general testing function
 

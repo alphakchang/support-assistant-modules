@@ -102,6 +102,13 @@ def grabList():
     else:
         return jsonify({'error': 'List not found'}), 404
 
+@app.route('/raiseHRTicket', methods=['POST'])
+def raiseHRTicket():
+    data = request.get_json() # get data from request
+    list_data = data['list'] # get the list from the data
+    print(list_data)
+    href_link = "http://example.com/"
+    return jsonify({'link': href_link})
 
 @app.route('/test')
 def test():
