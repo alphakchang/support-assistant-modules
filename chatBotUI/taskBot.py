@@ -27,10 +27,10 @@ def get_ticket_types():
         print(items.text)
     driver.quit()
 
-def hr_type_list():
-    return ["", "Starter", "Leaver", "Change department", "Office management", "Linguistic quality issues", "Ideas"]
+def hrList_ticketTypes():
+    return ["Starter", "Leaver", "Change department", "Office management", "Linguistic quality issues", "Ideas"]
 
-def hr_strategic_group():
+def hrList_strategicGroups():
     return ["AVA", "Burberry", "China", "Games", "Germany", "LQA", "Nexus", "LTC", "Other"]
 
 def define_list():
@@ -66,7 +66,7 @@ def create_hr_ticket(list):
 
 if __name__ == "__main__":
     get_ticket_types()
-    hr_type_list()
-    hr_strategic_group()
+    hrList_ticketTypes()
+    hrList_strategicGroups()
     define_list()
     create_hr_ticket()

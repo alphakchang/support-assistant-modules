@@ -1,9 +1,9 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import pandas as pd
 import openai
 import taskBot as tb
 
-openai.api_key = ""
+openai.api_key = "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"
 
 app = Flask(__name__)
 
@@ -88,10 +88,24 @@ def find_indices_of_trimmed_list(concatenated_tags, range_string_dict, trimmed_l
     indices_set = set(indices)
     return indices_set
 
+@app.route('/grabList')
+def grabList():
+    listName = request.args.get('listName', None)
+
+    lists = {
+        'ticketTypes': tb.hrList_ticketTypes(),
+        'strategicGroups': tb.hrList_strategicGroups()
+    }
+
+    if listName in lists:
+        return jsonify({'reply': lists[listName]})
+    else:
+        return jsonify({'error': 'List not found'}), 404
+
+
 @app.route('/test')
 def test():
-    tb.define_list()
-    test = "hello"
+    test = tb.hrList_ticketTypes()
     return {'reply': test}
 
 

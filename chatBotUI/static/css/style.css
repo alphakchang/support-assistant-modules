@@ -98,7 +98,11 @@ button:active {
     transform: scale(0.95);
 }
 
-button.choiceButton {
+button.initChoiceButton {
+    margin: 2px;
+}
+
+button.ticketTypeButton {
     margin: 2px;
 }
 
