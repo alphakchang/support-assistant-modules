@@ -3,7 +3,7 @@ import pandas as pd
 import openai
 import taskBot as tb
 
-openai.api_key = "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"
+openai.api_key = ""
 
 app = Flask(__name__)
 
