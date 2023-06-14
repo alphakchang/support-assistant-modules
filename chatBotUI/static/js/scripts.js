@@ -12,17 +12,9 @@ window.onload = function() {
     }, 1100);
     setTimeout(async function() {
         var initChoice = await getUserChoice("initChoiceButton");
-        if (initChoice === options.reverse()[0]) {
-            displayUserMessage(initChoice)
-            hrTicketFlow = true;
+        if (initChoice === options.reverse()[0]) { // HR Support Tickets
+            displayUserMessage(initChoice);
             createHRTicketList();
-            // sendReply("Please use the following link to log a ticket:");
-            // chatlogs.appendChild(document.createElement('br'));
-            // let linkElement = document.createElement('a');
-            // linkElement.innerText = "Human Resource Ticket Creation";
-            // linkElement.href = "https://support.alphacrc.com:9676/portal/page/116-hr";
-            // linkElement.target = "_blank";
-            // sendLink(linkElement);
         } else {
             randomGreeting();
             document.getElementById('messageBox').focus();
@@ -88,13 +80,13 @@ function generateAnswer(message) {
                 chatlogs.appendChild(document.createElement('br'));
 
                 // let links = JSON.parse(reply);
-                for (let link in reply) {
-                    let linkElement = document.createElement('a');
-                    linkElement.innerText = link;
-                    linkElement.href = reply[link];
-                    linkElement.target = "_blank";
-                    sendLink(linkElement);
-                }
+                // for (let link in reply) {
+                    // let linkElement = document.createElement('a');
+                    // linkElement.innerText = link;
+                    // linkElement.href = reply[link];
+                    // linkElement.target = "_blank";
+                sendLink(reply);
+                // }
             }
             loading_off();
         })
@@ -106,8 +98,9 @@ function generateAnswer(message) {
 
 // Interact with user to create a list for ticket raising
 async function createHRTicketList() {
-    var finalList = [];
+    hrTicketFlow = true;
     console.log("hrTicketFlow running");
+    var finalList = [];
 
     // 1. Get the alpha username
     sendReply("No problem! I will help you to raise a ticket")
@@ -219,8 +212,8 @@ async function createHRTicketList() {
         console.log(finalList);
     }
 
-    // 8. Get the language department code
-    sendReply("What is the language department code for the " + typeChoice + "?");
+    // 8. Get the department code
+    sendReply("What is the department code for the " + typeChoice + "?");
     document.getElementById('messageBox').focus();
     waitingForUser = true;
     nextStep = await waitingOver();
@@ -268,7 +261,7 @@ async function createHRTicketList() {
         }
     }
 
-    // 11. Any other notes
+    // 11. Any other info
     sendReply("Please enter any additional info");
     document.getElementById('messageBox').focus();
     waitingForUser = true;
@@ -283,8 +276,13 @@ async function createHRTicketList() {
     sendReply("I will now raise your ticket");
     loading_on();
     var ticketLink = await raiseHRTicket(finalList);
-    console.log("Ticket Link: " + ticketLink);
-    // now pass the list to another function to raise the ticket and get the link of the ticket
+    console.log(ticketLink);
+    sendReply("Your ticket has been raised, please use the link below to access and monitor it.");
+    sendLink(ticketLink);
+    loading_off();
+    
+    hrTicketFlow = false;
+    console.log("hrTicketFlow finished");
 }
 
 function raiseHRTicket(listData) {
@@ -364,10 +362,17 @@ function sendReply(reply) {
     chatlogs.scrollTop = chatlogs.scrollHeight;
 }
 
-function sendLink(linkElement) {
-    chatlogs.appendChild(linkElement);
-    chatlogs.appendChild(document.createElement('br'));
-    chatlogs.scrollTop = chatlogs.scrollHeight;
+// receive links with python dictionary format {"xxx": "url"}
+function sendLink(links) {
+    for (let link in links) {
+        let linkElement = document.createElement('a');
+        linkElement.innerText = link;
+        linkElement.href = links[link];
+        linkElement.target = "_blank";
+        chatlogs.appendChild(linkElement);
+        chatlogs.appendChild(document.createElement('br'));
+        chatlogs.scrollTop = chatlogs.scrollHeight;
+    }
 }
 
 function sendChoiceList(choiceList, buttonClass) {

@@ -48,7 +48,7 @@ def find_matches():
         for i in indices:
             reply[database["Chapter"][i]] = database["URL"][i]
     # reply = {} #debug
-    # print(reply) #debug
+    print(reply) #debug
     return {'reply': reply}
 
 def gpt(prompt):
@@ -107,8 +107,10 @@ def raiseHRTicket():
     data = request.get_json() # get data from request
     list_data = data['list'] # get the list from the data
     print(list_data)
-    href_link = "http://example.com/"
-    return jsonify({'link': href_link})
+    href_link = tb.create_hr_ticket(list_data)
+
+    # return jsonify({'link': href_link})
+    return {'link': href_link}
 
 @app.route('/test')
 def test():

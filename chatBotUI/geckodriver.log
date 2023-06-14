@@ -14,3 +14,174 @@ JavaScript warning: https://support.alphacrc.com:9676/settings/v1/plugins/20.js?
 console.warn: LoginRecipes: "Falling back to a synchronous message for: https://support.alphacrc.com:9676."
 JavaScript warning: https://support.alphacrc.com:9676/assets/all_bundle.js?7500107, line 7561: unreachable code after return statement
 JavaScript warning: https://support.alphacrc.com:9676/settings/v1/plugins/20.js?1576661365?7500107, line 307: unreachable code after return statement
+1686742062274	geckodriver	INFO	Listening on 127.0.0.1:53604
+1686742065332	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "53605" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\kchang\\AppData\\Local\\Temp\\rust_mozprofileX0k2Li"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1686742065994	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1686742066003	Marionette	INFO	Listening on port 53616
+Read port: 53616
+WebDriver BiDi listening on ws://127.0.0.1:53605
+1686742066199	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:53605/devtools/browser/f8bcee6e-1d65-4cc3-9593-d635fe0025ec
+JavaScript warning: https://support.alphacrc.com:9676/assets/all_bundle.js?7500107, line 7561: unreachable code after return statement
+JavaScript warning: https://support.alphacrc.com:9676/settings/v1/plugins/20.js?1576661365?7500107, line 307: unreachable code after return statement
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://support.alphacrc.com:9676."
+JavaScript warning: https://support.alphacrc.com:9676/assets/all_bundle.js?7500107, line 7561: unreachable code after return statement
+JavaScript warning: https://support.alphacrc.com:9676/settings/v1/plugins/20.js?1576661365?7500107, line 307: unreachable code after return statement
+1686742121148	Marionette	INFO	Stopped listening on port 53616
+Dynamically enable window occlusion 1
+1686743236492	geckodriver	INFO	Listening on 127.0.0.1:55123
+1686743239553	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "55124" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\kchang\\AppData\\Local\\Temp\\rust_mozprofile5rQi8w"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1686743240193	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1686743240203	Marionette	INFO	Listening on port 55135
+Read port: 55135
+WebDriver BiDi listening on ws://127.0.0.1:55124
+1686743240371	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:55124/devtools/browser/376cd3b6-efbf-4e22-9777-3ad093acec37
+JavaScript warning: https://support.alphacrc.com:9676/assets/all_bundle.js?7500107, line 7561: unreachable code after return statement
+JavaScript warning: https://support.alphacrc.com:9676/settings/v1/plugins/20.js?1576661365?7500107, line 307: unreachable code after return statement
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://support.alphacrc.com:9676."
+JavaScript warning: https://support.alphacrc.com:9676/assets/all_bundle.js?7500107, line 7561: unreachable code after return statement
+JavaScript warning: https://support.alphacrc.com:9676/settings/v1/plugins/20.js?1576661365?7500107, line 307: unreachable code after return statement
+1686743555275	Marionette	INFO	Stopped listening on port 55135
+Dynamically enable window occlusion 1
+1686743559976	geckodriver	INFO	Listening on 127.0.0.1:55528
+1686743563018	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "55529" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\kchang\\AppData\\Local\\Temp\\rust_mozprofileXsF5nM"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1686743563734	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1686743563743	Marionette	INFO	Listening on port 55539
+Read port: 55539
+WebDriver BiDi listening on ws://127.0.0.1:55529
+1686743563908	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:55529/devtools/browser/01b98468-3d29-4c0f-92c5-2f3632605cba
+JavaScript warning: https://support.alphacrc.com:9676/assets/all_bundle.js?7500107, line 7561: unreachable code after return statement
+JavaScript warning: https://support.alphacrc.com:9676/settings/v1/plugins/20.js?1576661365?7500107, line 307: unreachable code after return statement
+1686743646963	Marionette	INFO	Stopped listening on port 55539
+Dynamically enable window occlusion 1
+1686743679933	geckodriver	INFO	Listening on 127.0.0.1:55700
+1686743683001	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "55701" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\kchang\\AppData\\Local\\Temp\\rust_mozprofileU38vfN"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1686743683658	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1686743683667	Marionette	INFO	Listening on port 55712
+WebDriver BiDi listening on ws://127.0.0.1:55701
+Read port: 55712
+1686743683862	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:55701/devtools/browser/39088179-3d1e-48e8-ab66-a403d7e75219
+JavaScript warning: https://support.alphacrc.com:9676/assets/all_bundle.js?7500107, line 7561: unreachable code after return statement
+JavaScript warning: https://support.alphacrc.com:9676/settings/v1/plugins/20.js?1576661365?7500107, line 307: unreachable code after return statement
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://support.alphacrc.com:9676."
+JavaScript warning: https://support.alphacrc.com:9676/assets/all_bundle.js?7500107, line 7561: unreachable code after return statement
+JavaScript warning: https://support.alphacrc.com:9676/settings/v1/plugins/20.js?1576661365?7500107, line 307: unreachable code after return statement
+1686743758038	Marionette	INFO	Stopped listening on port 55712
+Dynamically enable window occlusion 1
+1686743789886	geckodriver	INFO	Listening on 127.0.0.1:55877
+1686743792923	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "55878" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\kchang\\AppData\\Local\\Temp\\rust_mozprofileMVvEQJ"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1686743793636	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1686743793644	Marionette	INFO	Listening on port 55889
+Read port: 55889
+WebDriver BiDi listening on ws://127.0.0.1:55878
+1686743793818	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:55878/devtools/browser/28b7b9d7-cb05-40cd-abcb-643a2b5b71b4
+JavaScript warning: https://support.alphacrc.com:9676/assets/all_bundle.js?7500107, line 7561: unreachable code after return statement
+JavaScript warning: https://support.alphacrc.com:9676/settings/v1/plugins/20.js?1576661365?7500107, line 307: unreachable code after return statement
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://support.alphacrc.com:9676."
+JavaScript warning: https://support.alphacrc.com:9676/assets/all_bundle.js?7500107, line 7561: unreachable code after return statement
+JavaScript warning: https://support.alphacrc.com:9676/settings/v1/plugins/20.js?1576661365?7500107, line 307: unreachable code after return statement
+1686743868586	Marionette	INFO	Stopped listening on port 55889
+Dynamically enable window occlusion 1
+1686743898921	geckodriver	INFO	Listening on 127.0.0.1:56050
+1686743901992	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "56051" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\kchang\\AppData\\Local\\Temp\\rust_mozprofiletgxTP5"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1686743902654	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1686743902663	Marionette	INFO	Listening on port 56060
+Read port: 56060
+WebDriver BiDi listening on ws://127.0.0.1:56051
+1686743902861	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:56051/devtools/browser/f46eeee3-fc34-40df-b04e-292849184f09
+JavaScript warning: https://support.alphacrc.com:9676/assets/all_bundle.js?7500107, line 7561: unreachable code after return statement
+JavaScript warning: https://support.alphacrc.com:9676/settings/v1/plugins/20.js?1576661365?7500107, line 307: unreachable code after return statement
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://support.alphacrc.com:9676."
+JavaScript warning: https://support.alphacrc.com:9676/assets/all_bundle.js?7500107, line 7561: unreachable code after return statement
+JavaScript warning: https://support.alphacrc.com:9676/settings/v1/plugins/20.js?1576661365?7500107, line 307: unreachable code after return statement
+JavaScript warning: https://support.alphacrc.com:9676/assets/all_bundle.js?7500107, line 7561: unreachable code after return statement
+JavaScript warning: https://support.alphacrc.com:9676/settings/v1/plugins/20.js?1576661365?7500107, line 307: unreachable code after return statement
+1686748646066	Marionette	INFO	Stopped listening on port 56060
+Dynamically enable window occlusion 1
+[Parent 19656, IPC I/O Parent] WARNING: DuplicateHandle failed for handle 0 in TransferHandles: file /builds/worker/checkouts/gecko/ipc/chromium/src/chrome/common/ipc_channel_win.cc:787
+1686750134373	geckodriver	INFO	Listening on 127.0.0.1:52552
+1686750137440	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "52553" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\kchang\\AppData\\Local\\Temp\\rust_mozprofileJCpILH"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1686750138120	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1686750138130	Marionette	INFO	Listening on port 52560
+Read port: 52560
+WebDriver BiDi listening on ws://127.0.0.1:52553
+1686750138303	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:52553/devtools/browser/aa41a026-91fe-44a4-83ae-15ec62822cb7
+JavaScript warning: https://support.alphacrc.com:9676/assets/all_bundle.js?7500107, line 7561: unreachable code after return statement
+JavaScript warning: https://support.alphacrc.com:9676/settings/v1/plugins/20.js?1576661365?7500107, line 307: unreachable code after return statement
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://support.alphacrc.com:9676."
+JavaScript warning: https://support.alphacrc.com:9676/assets/all_bundle.js?7500107, line 7561: unreachable code after return statement
+JavaScript warning: https://support.alphacrc.com:9676/settings/v1/plugins/20.js?1576661365?7500107, line 307: unreachable code after return statement
+1686755244017	Marionette	INFO	Stopped listening on port 52560
+Dynamically enable window occlusion 1
+1686760298510	geckodriver	INFO	Listening on 127.0.0.1:63897
+1686760301586	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "63898" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\kchang\\AppData\\Local\\Temp\\rust_mozprofilem0lnF9"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1686760302255	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1686760302264	Marionette	INFO	Listening on port 63907
+Read port: 63907
+WebDriver BiDi listening on ws://127.0.0.1:63898
+1686760302443	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:63898/devtools/browser/96fe2b04-4db1-4a8f-b509-ff94e6528abf
+JavaScript warning: https://support.alphacrc.com:9676/assets/all_bundle.js?7500107, line 7561: unreachable code after return statement
+JavaScript warning: https://support.alphacrc.com:9676/settings/v1/plugins/20.js?1576661365?7500107, line 307: unreachable code after return statement
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://support.alphacrc.com:9676."
+JavaScript warning: https://support.alphacrc.com:9676/assets/all_bundle.js?7500107, line 7561: unreachable code after return statement
+JavaScript warning: https://support.alphacrc.com:9676/settings/v1/plugins/20.js?1576661365?7500107, line 307: unreachable code after return statement
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://support.alphacrc.com:9676."
+JavaScript warning: https://support.alphacrc.com:9676/assets/all_bundle.js?7500107, line 7561: unreachable code after return statement
+JavaScript warning: https://support.alphacrc.com:9676/settings/v1/plugins/20.js?1576661365?7500107, line 307: unreachable code after return statement
+[Parent 25944, IPC I/O Parent] WARNING: DuplicateHandle failed for handle 0 in TransferHandles: file /builds/worker/checkouts/gecko/ipc/chromium/src/chrome/common/ipc_channel_win.cc:787
+1686761103703	Marionette	INFO	Stopped listening on port 63907
+Dynamically enable window occlusion 1
+!!! error running onStopped callback: TypeError: callback is not a function
+1686761699664	geckodriver	INFO	Listening on 127.0.0.1:64300
+1686761702715	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "64301" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\kchang\\AppData\\Local\\Temp\\rust_mozprofilevTuSJs"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1686761703403	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1686761703412	Marionette	INFO	Listening on port 64308
+Read port: 64308
+WebDriver BiDi listening on ws://127.0.0.1:64301
+1686761703582	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:64301/devtools/browser/569a9b52-6ce2-40fe-8dbe-0ade99624e28
+JavaScript warning: https://support.alphacrc.com:9676/assets/all_bundle.js?7500107, line 7561: unreachable code after return statement
+JavaScript warning: https://support.alphacrc.com:9676/settings/v1/plugins/20.js?1576661365?7500107, line 307: unreachable code after return statement
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://support.alphacrc.com:9676."
+JavaScript warning: https://support.alphacrc.com:9676/assets/all_bundle.js?7500107, line 7561: unreachable code after return statement
+JavaScript warning: https://support.alphacrc.com:9676/settings/v1/plugins/20.js?1576661365?7500107, line 307: unreachable code after return statement
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://support.alphacrc.com:9676."
+JavaScript warning: https://support.alphacrc.com:9676/assets/all_bundle.js?7500107, line 7561: unreachable code after return statement
+JavaScript warning: https://support.alphacrc.com:9676/settings/v1/plugins/20.js?1576661365?7500107, line 307: unreachable code after return statement
+1686761711947	Marionette	INFO	Stopped listening on port 64308
+Dynamically enable window occlusion 1
+[Parent 24532, IPC I/O Parent] WARNING: DuplicateHandle failed for handle 0 in TransferHandles: file /builds/worker/checkouts/gecko/ipc/chromium/src/chrome/common/ipc_channel_win.cc:787
