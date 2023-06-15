@@ -111,14 +111,20 @@ async function createHRTicketList() {
     var nextStep = await waitingOver();
     if (nextStep) {
         console.log("username entered: " + userMessage);
-        let alpha_username = userMessage;
+        // let alpha_username = userMessage;
+        let alpha_username = "kchang"; // override with my username for testing purpose
         finalList.push(alpha_username);
-        console.log(finalList);
+        // console.log(finalList);
+        if (userMessage === "skesmodel") {
+            sendReply("Welcome Steen!")
+        }
+        if (userMessage === "staratukhina") {
+            sendReply("Welcome Lana!")
+        }
     }
 
     // 2. Get the ticket type
     var hrTicketList = await grabList("ticketTypes");
-    // console.log(hrTicketList);
     sendReply("Please choose the ticket type");
     sendChoiceList(hrTicketList, "ticketTypeButton");
     var userChoice = await getUserChoice("ticketTypeButton");
@@ -126,19 +132,21 @@ async function createHRTicketList() {
     if (typeChoice === "leaver") {
         leaver = true;
     }
-    // console.log(userChoice);
     displayUserMessage(userChoice);
     // Now find the index in the type list
     hrTicketList.reverse();
     hrTicketList.unshift("");
     var typeIndex = hrTicketList.findIndex(item => item === userChoice);
-    // console.log(hrTicketList);
-    // console.log(typeIndex);
     finalList.push(typeIndex);
-    console.log(finalList);
+    // console.log(finalList);
 
     // 3. Get the full name of the person to action on
-    sendReply("Please enter the full name of the " + typeChoice);
+    if (typeChoice === "change department") {
+        sendReply("Please enter the full name of the person who would be changing department")
+    }
+    else {
+        sendReply("Please enter the full name of the " + typeChoice);
+    }
     document.getElementById('messageBox').focus();
     waitingForUser = true;
     nextStep = await waitingOver();
@@ -157,11 +165,16 @@ async function createHRTicketList() {
         console.log("Full name entered: " + userMessage);
         let fullname = userMessage;
         finalList.push(fullname);
-        console.log(finalList);
+        // console.log(finalList);
     }
 
     // 4. Get the office
-    sendReply("Please enter the office location for the " + typeChoice);
+    if (typeChoice === "change department") {
+        sendReply("Please enter the office location after the change takes place")
+    }
+    else {
+        sendReply("Please enter the office location for the " + typeChoice);
+    }
     document.getElementById('messageBox').focus();
     waitingForUser = true;
     nextStep = await waitingOver();
@@ -169,13 +182,17 @@ async function createHRTicketList() {
         console.log("Office: " + userMessage);
         let office = userMessage;
         finalList.push(office);
-        console.log(finalList);
+        // console.log(finalList);
     }
 
     // 5. Get the stratetic group
     var hrStrategicList = await grabList("strategicGroups");
-    // console.log(hrStrategicList);
-    sendReply("Please choose the strategic group");
+    if (typeChoice === "change department") {
+        sendReply("Please choose the new strategic group after the change takes place");
+    }
+    else {
+        sendReply("Please choose the strategic group");
+    }
     sendChoiceList(hrStrategicList, "strategicGroupButton");
     userChoice = await getUserChoice("strategicGroupButton");
     console.log(userChoice);
@@ -183,10 +200,8 @@ async function createHRTicketList() {
     // Now find the index in the strategic group list
     hrStrategicList.reverse();
     var strategicIndex = hrStrategicList.findIndex(item => item === userChoice);
-    // console.log(hrStrategicList);
-    // console.log(strategicIndex);
     finalList.push(strategicIndex);
-    console.log(finalList);
+    // console.log(finalList);
     
     // 6. Get the relevant mail aliases
     sendReply("Which mail alias(es) is this " + typeChoice + " associated with? (if none can enter n/a)");
@@ -197,11 +212,16 @@ async function createHRTicketList() {
         console.log("Mail aliases: " + userMessage);
         let aliases = userMessage;
         finalList.push(aliases);
-        console.log(finalList);
+        // console.log(finalList);
     }
 
     // 7. Get the Cost centre
-    sendReply("What is the cost centre for the " + typeChoice + "?");
+    if (typeChoice === "change department") {
+        sendReply("Please enter the new cost centre after the change takes place");
+    }
+    else {
+        sendReply("What is the cost centre for the " + typeChoice + "?");
+    }
     document.getElementById('messageBox').focus();
     waitingForUser = true;
     nextStep = await waitingOver();
@@ -209,11 +229,16 @@ async function createHRTicketList() {
         console.log("Cost centre: " + userMessage);
         let costCentre = userMessage;
         finalList.push(costCentre);
-        console.log(finalList);
+        // console.log(finalList);
     }
 
     // 8. Get the department code
-    sendReply("What is the department code for the " + typeChoice + "?");
+    if (typeChoice === "change department") {
+        sendReply("What is the new department code for the person who would be changing department?");
+    }
+    else {
+        sendReply("What is the department code for the " + typeChoice + "?");
+    }
     document.getElementById('messageBox').focus();
     waitingForUser = true;
     nextStep = await waitingOver();
@@ -221,7 +246,7 @@ async function createHRTicketList() {
         console.log("Department: " + userMessage);
         let department = userMessage;
         finalList.push(department);
-        console.log(finalList);
+        // console.log(finalList);
     }
 
     // 9. Get the date that the change will take effect
@@ -244,7 +269,7 @@ async function createHRTicketList() {
         }
         console.log("Date: " + userMessage);
         finalList.push(date);
-        console.log(finalList);
+        // console.log(finalList);
     }
 
     // 10. Check if this is a leaver, if yes, ask about holiday arrangement
@@ -257,7 +282,7 @@ async function createHRTicketList() {
             console.log("Remaining holiday arrangement: " + userMessage);
             let holidayArrangement = userMessage;
             finalList.push(holidayArrangement);
-            console.log(finalList);
+            // console.log(finalList);
         }
     }
 

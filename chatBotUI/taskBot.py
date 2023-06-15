@@ -16,13 +16,16 @@ def hrList_strategicGroups():
 def create_hr_ticket(list):
     # Open browser and get to HR ticket URL
     options = Options()
-    # options.add_argument("-headless")
+    options.add_argument("-headless")
     driver = webdriver.Firefox(options=options)
     driver.get("https://support.alphacrc.com:9676/portal/page/116-hr")
 
     # Login
     email = create_email(list)
-    driver.find_element(By.XPATH, "//input[@label='Email:']").send_keys(email)
+    userEmail = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.XPATH, "//input[@label='Email:']"))
+    )
+    userEmail.send_keys(email)
     driver.find_element(By.XPATH, "//button[@data-button-type='submit']").click()
 
     # Start filling out ticket
@@ -95,7 +98,7 @@ def create_description(list):
     date = "Effective Date: " + list[8] + "\n\n"
 
     if list[1] == 1: # Starter
-        notes = "Note:\nPlease setup the following:\nAlpha computer\nAlpha email account\nTWeb\nMoodle\n\n"
+        notes = "Note:\nDefault output rate: 1800 during probation, 2400 after\n\nPlease setup the following:\nAlpha computer\nAlpha email account\nTWeb\nMoodle\n\n"
         additional = "Additional Info:\n" + list[9] + "\n"
 
     elif list[1] == 2: # Leaver

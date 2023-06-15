@@ -112,9 +112,9 @@ def raiseHRTicket():
     # return jsonify({'link': href_link})
     return {'link': href_link}
 
-@app.route('/test')
-def test():
-    test = tb.hrList_ticketTypes()
-    return {'reply': test}
+# @app.route('/test')
+# def test():
+#     test = tb.hrList_ticketTypes()
+#     return {'reply': test}
 
 
